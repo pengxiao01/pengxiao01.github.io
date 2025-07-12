@@ -283,32 +283,33 @@
             margin-bottom: 1rem;
         }
 
-        /* CV Section */
-        .cv-section {
-            margin-bottom: 2rem;
+        /* CV Section - Simplified */
+        .cv-download-container {
+            text-align: center;
+            padding: 3rem 0;
         }
 
-        .cv-section h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .cv-download-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
         }
 
-        .cv-item {
-            margin-bottom: 1rem;
-            padding-left: 1rem;
-            border-left: 2px solid #3498db;
+        .cv-download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
         }
 
-        .cv-item h4 {
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-        }
-
-        .cv-item .date {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 0.3rem;
+        .cv-download-btn i {
+            margin-right: 0.5rem;
         }
 
         /* Footer */
@@ -724,199 +725,20 @@
                 </div>
             </section>
 
-            <!-- CV Section -->
+            <!-- CV Section - Simplified -->
             <section id="cv" class="section">
                 <h2>Curriculum Vitae</h2>
                 
-                <div class="cv-section">
-                    <h3>Education</h3>
-                    <div class="cv-item">
-                        <h4>Ph.D. in Civil Engineering</h4>
-                        <p class="date">2023</p>
-                        <p>McMaster University, Canada</p>
-                        <p>Focus: Wastewater Simulation & Uncertainty Analysis</p>
-                        <p>Supervisor: Dr. Zoe Li</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>M.A.Sc. in Civil Engineering</h4>
-                        <p class="date">2019</p>
-                        <p>McMaster University, Canada</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>B.Eng. in Civil Engineering</h4>
-                        <p class="date">2017</p>
-                        <p>Jilin University, China</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>B.Mgmt. in Project Management</h4>
-                        <p class="date">2017</p>
-                        <p>Jilin University, China</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Academic Positions</h3>
-                    <div class="cv-item">
-                        <h4>Postdoctoral Fellow</h4>
-                        <p class="date">October 2023 - Present</p>
-                        <p>Chemical and Biological Engineering Department, Northwestern University</p>
-                    <div class="cv-item">
-                        <h4>Postdoctoral Fellow</h4>
-                        <p class="date">October 2023 - Present</p>
-                        <p>Chemical and Biological Engineering Department, Northwestern University</p>
-                        <p>Supervisor: Dr. Jennifer Dunn</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Postdoctoral Fellow</h4>
-                        <p class="date">July 2023 - October 2023</p>
-                        <p>Civil Engineering Department, McMaster University</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Graduate Research Assistant</h4>
-                        <p class="date">January 2019 - April 2023</p>
-                        <p>McMaster University, Canada</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Awards and Honors</h3>
-                    <div class="cv-item">
-                        <h4>Department Nomination for CAGS-ProQuest Distinguished Dissertation Award</h4>
-                        <p class="date">2024</p>
-                        <p>McMaster University</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Department Nomination for Governor General's Graduate Academic Medals</h4>
-                        <p class="date">2023</p>
-                        <p>McMaster University</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Engineering Graduate Society Travel Award</h4>
-                        <p class="date">2022</p>
-                        <p>McMaster University</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Best Poster Award</h4>
-                        <p class="date">2021</p>
-                        <p>International Water Association - Young Water Professionals</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Academic Scholarships</h4>
-                        <p class="date">2014, 2017</p>
-                        <p>Jilin University, China</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Fellowships and Grants</h3>
-                    <div class="cv-item">
-                        <h4>MacData Fellowship</h4>
-                        <p class="date">2020</p>
-                        <p>McMaster University, $7,500 CAD</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>McMaster English Readiness for Graduate Excellence</h4>
-                        <p class="date">2019</p>
-                        <p>McMaster University, $7,500 CAD</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Student Incentive Award</h4>
-                        <p class="date">2020</p>
-                        <p>WEAO Technical Symposium and OPCEA Exhibition</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Teaching Experience</h3>
-                    <div class="cv-item">
-                        <h4>Teaching Assistant - Design and Synthesis Project in Civil Engineering (Capstone)</h4>
-                        <p class="date">2021</p>
-                        <p>McMaster University</p>
-                        <p>Provided guidance and feedback, held office hours to answer questions</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Teaching Assistant - Principles of Geological and Geo-Environmental Engineering</h4>
-                        <p class="date">2019, 2020, 2022, 2023</p>
-                        <p>McMaster University</p>
-                        <p>Led labs and tutorials, held office hours, graded assignments and exams</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Graduate & Undergraduate Research Mentoring</h3>
-                    <div class="cv-item">
-                        <h4>Undergraduate Students Mentored</h4>
-                        <p class="date">2019-2023</p>
-                        <p>McMaster University - 5 undergraduate students</p>
-                        <p>2 undergraduate students published peer-reviewed journal articles as co-first authors</p>
-                        <p>Won Best Poster Award at International Water Association - Young Water Professionals 2021</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Graduate Student Supervision</h4>
-                        <p class="date">2022, 2025</p>
-                        <p>Advised 1 Master's student on predicting membrane fouling (McMaster, 2022)</p>
-                        <p>Co-advising 1 Master's student on LLM application for LCA (Northwestern, 2025)</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Selected Presentations and Posters</h3>
-                    <div class="cv-item">
-                        <h4>Environmental impacts of future cotton production in the United States</h4>
-                        <p class="date">2025</p>
-                        <p>ISSST Conference, Minnesota, USA (Presentation)</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Life cycle assessment and technoeconomic analysis of an intelligent water resource recovery system</h4>
-                        <p class="date">2025</p>
-                        <p>ISSST Conference, Minnesota, USA (Presentation)</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Prediction of Bisphenol-A contamination in Canadian municipal wastewater</h4>
-                        <p class="date">2022</p>
-                        <p>PEOPLE 2022 International Conference, Charlottetown, Canada (Presentation)</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Influent forecasting for wastewater treatment plants in North America</h4>
-                        <p class="date">2021</p>
-                        <p>Canadian IWA Young Water Professionals Conference, Toronto, Canada <strong>(Best Poster Award)</strong></p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Development of data-driven models for inflow prediction at wastewater treatment plants</h4>
-                        <p class="date">2019</p>
-                        <p>9th International Young Water Professionals Conference, Toronto, Canada (Presentation)</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Professional Service</h3>
-                    <div class="cv-item">
-                        <h4>Guest Editor</h4>
-                        <p class="date">Ongoing</p>
-                        <p><em>Environments</em> & <em>Hydrology</em> - Joint Special Issues: "Hydrological Modeling and Sustainable Water Resources Management" (16 articles published, second issue ongoing)</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Peer Reviewer</h4>
-                        <p class="date">2019-Present</p>
-                        <p>Environmental Science & Technology, Journal of Water Process Engineering, Journal of Marine Science and Engineering, Journal of Environmental Chemical Engineering, Applied Sciences, Sustainability, Sustainable Cities and Society, Water Environment Research, Water</p>
-                    </div>
-                </div>
-                
-                <div class="cv-section">
-                    <h3>Academic References</h3>
-                    <div class="cv-item">
-                        <h4>Dr. Zoe Li (Ph.D. Thesis Supervisor)</h4>
-                        <p class="date">Associate Professor</p>
-                        <p>Department of Civil Engineering, McMaster University</p>
-                        <p>Email: zoeli@mcmaster.ca | Phone: +1 905-966-9508</p>
-                    </div>
-                    <div class="cv-item">
-                        <h4>Dr. Jennifer Dunn (Postdoc Advisor)</h4>
-                        <p class="date">Professor</p>
-                        <p>Chemical and Biological Engineering, Northwestern University</p>
-                        <p>Director, Center for Engineering Sustainability and Resilience</p>
-                        <p>Email: jennifer.dunn1@northwestern.edu | Phone: +1 847-467-6285</p>
-                    </div>
+                <div class="cv-download-container">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">
+                        For a comprehensive overview of my academic career, including complete publication list, awards, teaching experience, and professional activities, please download my full CV.
+                    </p>
+                    <a href="#" class="cv-download-btn">
+                        <i>📄</i> Download Full CV (PDF)
+                    </a>
+                    <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem;">
+                        Last updated: January 2025
+                    </p>
                 </div>
             </section>
 
