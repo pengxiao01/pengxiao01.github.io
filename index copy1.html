@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Pengxiao Zhou - Academic Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            padding: 2rem;
+            display: none;
+            scroll-margin-top: 80px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: block;
+        }
+
+        /* Publications */
+        .featured-publications {
+            margin-bottom: 3rem;
+        }
+
+        .featured-publication {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border: 2px solid #3498db;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.1);
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Increased from 200px */
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .featured-publication .publication-image {
+            width: 100%;
+            height: 450px; /* Increased height */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .featured-publication .publication-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .featured-publication .authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .featured-publication .venue {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .featured-publication .description {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .featured-publication .links a {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-right: 0.8rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .featured-publication .links a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .publication {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .publication h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication .authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication .venue {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication .links a {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .publication .links a:hover {
+            background: #2980b9;
+        }
+
+        /* Research & Teaching */
+        .research-item, .course-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .research-item h3, .course-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* CV Section - Simplified */
+        .cv-download-container {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .cv-download-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .cv-download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+        }
+
+        .cv-download-btn i {
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.2rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-publication {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .featured-publication .publication-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="my_folder/_DSC2849.jpg" alt="Profile Photo" class="profile-img">
+            <h1>Dr. Pengxiao Zhou</h1>
+            <p class="subtitle">Postdoctoral Fellow | Chemical and Biological Engineering | Northwestern University</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about" class="nav-link active">About</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#teaching" class="nav-link">Teaching</a></li>
+                <li><a href="#cv" class="nav-link">CV</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <!-- About Section -->
+            <section id="about" class="section active">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div>
+                        <p>Welcome to my academic website! I am a Postdoctoral Fellow in the Chemical and Biological Engineering Department at Northwestern University. My research focuses on life cycle assessment, techno-economic analysis, and wastewater resource recovery.</p>
+                        
+                        <p>I completed my Ph.D. in Civil Engineering from McMaster University, Canada in 2023, where I worked on wastewater simulation and uncertainty analysis. I also hold a Master of Applied Science in Civil Engineering from McMaster University (2019) and dual Bachelor's degrees in Civil Engineering and Project Management from Jilin University, China (2017).</p>
+                        
+                        <p>My current research interests include:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Life Cycle Assessment (LCA) and Environmental Impact Analysis</li>
+                            <li>Techno-Economic Analysis of Water Treatment Systems</li>
+                            <li>Wastewater Resource Recovery and Sustainable Water Management</li>
+                            <li>Machine Learning Applications in Environmental Engineering</li>
+                            <li>Uncertainty Analysis in Environmental Systems Modeling</li>
+                        </ul>
+                        
+                        <p>I am passionate about developing sustainable solutions for water and wastewater treatment, with particular expertise in environmental systems modeling and data-driven approaches. I welcome opportunities for collaboration and am interested in mentoring students in environmental engineering research.</p>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- Research Section -->
+            <section id="research" class="section">
+                <h2>Research</h2>
+                
+                <div class="research-item">
+                    <h3>Greenhouse Gas Emissions from U.S. Wastewater Treatment</h3>
+                    <p><strong>Funding:</strong> Northwestern University Postdoctoral Fellowship</p>
+                    <p>Leading research to benchmark greenhouse gas emissions from U.S. wastewater treatment plants and evaluate energy usage and GHG impacts of global wastewater treatment expansion and nutrient recovery. This work contributes to sustainable water management strategies and climate impact mitigation.</p>
+                    <p><strong>Status:</strong> Manuscript under major revision at Nature Water</p>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Life Cycle Assessment of Water Resource Recovery Systems</h3>
+                    <p><strong>Funding:</strong> Northwestern University, Collaborative Research</p>
+                    <p>Conducting comprehensive LCA and techno-economic analysis for novel wastewater resource recovery systems. This interdisciplinary project involves developing intelligent water treatment technologies with focus on sustainability and economic viability.</p>
+                    <p><strong>Key Publications:</strong> Multiple manuscripts in preparation, presentations at ISSST 2025</p>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Machine Learning for Environmental Systems Modeling</h3>
+                    <p><strong>Funding:</strong> Environment and Climate Change Canada, $200,000 CAD</p>
+                    <p>Developed hybrid models combining process-based and data-driven approaches for complex water systems, including prediction of contaminant removal and wastewater flow forecasting. Led successful collaboration with government agencies and industry partners.</p>
+                    <p><strong>Key Publications:</strong> Front Cover Story in Frontiers of Environmental Science & Engineering, Editor's Choice in Sustainability</p>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="section">
+                <h2>Publications</h2>
+                
+                <!-- Featured Publications -->
+                <div class="featured-publications">
+                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.4rem;">Featured Publications</h3>
+                    
+                    <div class="featured-publication">
+                        <img src="my_folder/Front Cover.jpeg" alt="Frontiers Journal Cover" class="publication-image">
+                        <div class="publication-content">
+                            <div class="featured-badge">Front Cover Story</div>
+                            <h3>Online machine learning for stream wastewater influent flow rate prediction under unprecedented emergencies</h3>
+                            <p class="authors">Pengxiao Zhou, Z. Li, Y. Zhang, S. Snowling, J. Barclay</p>
+                            <p class="venue">Frontiers of Environmental Science & Engineering, Vol. 17, No. 12, 152, 2023</p>
+                            <p class="description">This groundbreaking research presents innovative machine learning approaches for predicting wastewater flow rates during emergencies like COVID-19. The work was selected as a Front Cover Story and has significant implications for water treatment plant operations during unprecedented events.</p>
+                            <div class="links">
+                                <a href="https://doi.org/10.1007/s11783-023-1752-7">DOI</a>
+                                <a href="#">PDF</a>
+                                <a href="#">BibTeX</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-publication">
+                        <img src="https://via.placeholder.com/200x250/e74c3c/ffffff?text=Sustainability+Journal" alt="Sustainability Journal" class="publication-image">
+                        <div class="publication-content">
+                            <div class="featured-badge">Editor's Choice</div>
+                            <h3>Influent forecasting for wastewater treatment plants in North America</h3>
+                            <p class="authors">G. Boyd, D. Na, Z. Li, S. Snowling, Q. Zhang, Pengxiao Zhou</p>
+                            <p class="venue">Sustainability, Vol. 11, No. 6, 1764, 2019</p>
+                            <p class="description">This collaborative research developed advanced forecasting models for wastewater treatment plant operations across North America. Selected as Editor's Choice for its significant contribution to sustainable water management practices and operational efficiency.</p>
+                            <div class="links">
+                                <a href="https://doi.org/10.3390/su11061764">DOI</a>
+                                <a href="#">PDF</a>
+                                <a href="#">BibTeX</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-publication">
+                        <img src="https://via.placeholder.com/200x250/27ae60/ffffff?text=Nature+Water" alt="Nature Water Under Review" class="publication-image">
+                        <div class="publication-content">
+                            <div class="featured-badge">Under Review - Nature Water</div>
+                            <h3>Benchmarking Greenhouse Gas Emissions from US Wastewater Treatment for Targeted Reduction</h3>
+                            <p class="authors">S.H. El Abbadi, J. Feng, A.R. Hodson, M. Amouamouha, M.M. Busse, C. Polcuch, Pengxiao Zhou, J. Macknick, J.S. Guest, J.R. Stokes-Draut, J.B. Dunn</p>
+                            <p class="venue">Under Major Revision at Nature Water, 2024</p>
+                            <p class="description">Comprehensive benchmarking study of greenhouse gas emissions from US wastewater treatment facilities, providing critical data for policy makers and engineers to develop targeted emission reduction strategies. This work represents a major contribution to climate change mitigation in the water sector.</p>
+                            <div class="links">
+                                <a href="https://doi.org/10.31223/X5VQ59">Preprint</a>
+                                <a href="#">BibTeX</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regular Publications -->
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Recent Journal Articles</h3>
+                
+                <div class="publication">
+                    <h3>Toward Enhancing Wastewater Treatment with Resource Recovery in Integrated Assessment and Computable General Equilibrium Models</h3>
+                    <p class="authors">J.B. Dunn, K. Greene, E. Vasquez-Arroyo, M. Awais, A. Gomez-Sanabria, P. Kyle, R.R. Palatnik, R. Schaeffer, <strong>Pengxiao Zhou</strong>, B. Aissaoui, E. De Cian</p>
+                    <p class="venue">Environmental Science & Technology Letters, 2024</p>
+                    <p>Integration of wastewater treatment with resource recovery in global economic models for sustainable development.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1021/acs.estlett.4c00280">DOI</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Unraveling the impact of COVID-19 lockdowns on Canadian municipal sewage</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li, S. Snowling, J. Barclay</p>
+                    <p class="venue">Environmental Science: Water Research & Technology, Vol. 9, pp. 2213-2218, 2023</p>
+                    <p>Analysis of COVID-19 lockdown impacts on municipal wastewater characteristics across Canada.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1039/D3EW00126A">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Arbitrary polynomial chaos expansion for uncertainty analysis of the one-dimensional hindered-compression continuous settling model</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li</p>
+                    <p class="venue">Journal of Water Process Engineering, Vol. 52, 103489, 2023</p>
+                    <p>Novel uncertainty analysis methodology for wastewater settling models using polynomial chaos expansion.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1016/j.jwpe.2023.103489">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Prediction of bisphenol A contamination in Canadian municipal wastewater</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li, W. El-Dakhakhni, S.A. Smyth</p>
+                    <p class="venue">Journal of Water Process Engineering, Vol. 50, 103304, 2022</p>
+                    <p>Machine learning approach for predicting endocrine disruptor contamination in wastewater systems.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1016/j.jwpe.2022.103304">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Multi-step ahead prediction of hourly influent characteristics for wastewater treatment plants: a case study from North America</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li, S. Snowling, R. Goel, Q. Zhang</p>
+                    <p class="venue">Environmental Monitoring and Assessment, Vol. 194, No. 5, pp. 1-14, 2022</p>
+                    <p>Multi-step prediction methodology for wastewater treatment plant influent characteristics using machine learning.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1007/s10661-022-09957-y">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>A random forest model for inflow prediction at wastewater treatment plants</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li, S. Snowling, B.W. Baetz, D. Na, G. Boyd</p>
+                    <p class="venue">Stochastic Environmental Research and Risk Assessment, Vol. 33, No. 10, pp. 1781-1792, 2019</p>
+                    <p>Random forest machine learning approach for predicting wastewater inflow patterns at treatment facilities.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1007/s00477-019-01732-9">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Short-term wastewater influent prediction based on random forests and multi-layer perceptron</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Z. Li, S. Snowling, R. Goel, Q. Zhang</p>
+                    <p class="venue">Journal of Environmental Informatics Letters, Vol. 1, No. 2, pp. 87-93, 2019</p>
+                    <p>Comparison of machine learning algorithms for short-term wastewater influent forecasting.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.3808/jeil.201900010">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Assessing uncertainty propagation in hybrid models for daily streamflow simulation based on arbitrary polynomial chaos expansion</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, C. Li, Z. Li, Y. Cai</p>
+                    <p class="venue">Advances in Water Resources, Vol. 160, 104110, 2022</p>
+                    <p>Advanced uncertainty quantification methods for hydrological modeling applications.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1016/j.advwatres.2021.104110">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Membrane fouling prediction and uncertainty analysis using machine learning: A wastewater treatment plant case study</h3>
+                    <p class="authors">D.J. Kovacs, Z. Li, B.W. Baetz, Y. Hong, S. Donnaz, X. Zhao, <strong>Pengxiao Zhou</strong>, H. Ding, Q. Dong</p>
+                    <p class="venue">Journal of Membrane Science, Vol. 660, 120817, 2022</p>
+                    <p>Machine learning approaches for membrane fouling prediction with uncertainty quantification in wastewater treatment.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1016/j.memsci.2022.120817">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Hydrological response to climate and land use changes in the dry-warm valley of the upper yangtze river</h3>
+                    <p class="authors">C. Li, Y. Cai, Z. Li, Q. Zhang, L. Sun, X. Li, <strong>Pengxiao Zhou</strong></p>
+                    <p class="venue">Engineering, Vol. 19, pp. 24-39, 2021</p>
+                    <p>Analysis of hydrological responses to environmental changes in the Yangtze River basin.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1016/j.eng.2021.04.029">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Performance of statistical and machine learning ensembles for daily temperature downscaling</h3>
+                    <p class="authors">X. Li, Z. Li, W. Huang, <strong>Pengxiao Zhou</strong></p>
+                    <p class="venue">Theoretical and Applied Climatology, Vol. 140, No. 1, pp. 571-588, 2020</p>
+                    <p>Ensemble methods for climate downscaling using statistical and machine learning approaches.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1007/s00704-020-03098-3">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Prediction of long-term near-surface temperature based on NA-CORDEX output</h3>
+                    <p class="authors">X.Y. Li, Z. Li, Q. Zhang, <strong>Pengxiao Zhou</strong>, W. Huang</p>
+                    <p class="venue">Journal of Environmental Informatics Letters, Vol. 2, No. 1, pp. 10-18, 2019</p>
+                    <p>Long-term temperature prediction using North American regional climate model outputs.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.3808/jeil.201900012">DOI</a>
+                        <a href="#">PDF</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Conference Proceedings</h3>
+                
+                <div class="publication">
+                    <h3>Climate downscaling and hydrological impact assessment based on long short-term memory neural networks</h3>
+                    <p class="authors">Z. Li, X. Li, <strong>Pengxiao Zhou</strong>, Q. Zhang, C. Li, Y. Cai</p>
+                    <p class="venue">Proceedings of the 18th Annual Meeting of the Asia Oceania Geosciences Society, pp. 115-116, 2022</p>
+                    <p>Application of LSTM neural networks for climate downscaling and hydrological impact assessment.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1142/9789811260100_0039">DOI</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <div class="publication">
+                    <h3>Using machine learning techniques for influent flow forecasting at water resource reclamation facilities</h3>
+                    <p class="authors">S. Snowling, R. Goel, <strong>Pengxiao Zhou</strong>, Z. Li</p>
+                    <p class="venue">Proceedings of the Water Environment Federation, 2019</p>
+                    <p>Machine learning approaches for predicting influent flow patterns at water treatment facilities.</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.2175/193864718825157246">DOI</a>
+                        <a href="#">BibTeX</a>
+                    </div>
+                </div>
+                
+                <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Manuscripts in Preparation</h3>
+                
+                <div class="publication">
+                    <h3>Environmental impacts of future cotton production in the United States</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, Y. Zhou, J.B. Dunn</p>
+                    <p class="venue">In Preparation, 2025</p>
+                    <p>Comprehensive assessment of environmental impacts from cotton production considering climate and technology trends.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>Life cycle assessment and technoeconomic analysis of an intelligent water resource recovery system</h3>
+                    <p class="authors"><strong>Pengxiao Zhou</strong>, O.A. Kazi, E. Kin, W. Zhuang, S.B. Darling, G. Wells, J. Chen, Y. Chen, J.B. Dunn</p>
+                    <p class="venue">In Preparation, 2025</p>
+                    <p>Integrated LCA and TEA of novel intelligent water resource recovery technologies.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>Consequential Life Cycle Assessment for Mineral Mining</h3>
+                    <p class="authors">Y. Zhou†, <strong>Pengxiao Zhou</strong>†, J.B. Dunn (†Co-first authors)</p>
+                    <p class="venue">In Preparation, 2025</p>
+                    <p>Consequential LCA methodology for assessing environmental impacts of mineral extraction processes.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>A Sustainable Water Clean-up Solution: Multifunctional and Reusable Sponge-Based Adsorbents</h3>
+                    <p class="authors">Y. Ma, <strong>Pengxiao Zhou</strong>, K. Matuszewski, V. Nandwana, J.B. Dunn, V.P. Dravid</p>
+                    <p class="venue">In Preparation, 2025</p>
+                    <p>Review of multifunctional and reusable sponge-based adsorbents for sustainable water treatment applications.</p>
+                </div>
+            </section>
+
+            <!-- Teaching Section -->
+            <section id="teaching" class="section">
+                <h2>Teaching</h2>
+                
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Teaching Experience</h3>
+                
+                <div class="course-item">
+                    <h3>CIVENG 4X03: Design and Synthesis Project in Civil Engineering (Capstone)</h3>
+                    <p><strong>Position:</strong> Teaching Assistant | <strong>Year:</strong> 2021 | <strong>Institution:</strong> McMaster University</p>
+                    <p>Provided guidance and feedback to senior civil engineering students in their capstone design projects. Held regular office hours to answer questions and supported students through the design process from conception to final presentation.</p>
+                </div>
+                
+                <div class="course-item">
+                    <h3>CIVENG 3X03: Principles of Geological and Geo-Environmental Engineering</h3>
+                    <p><strong>Position:</strong> Teaching Assistant | <strong>Years:</strong> 2019, 2020, 2022, 2023 | <strong>Institution:</strong> McMaster University</p>
+                    <p>Led laboratory sessions and tutorials for undergraduate students in geological and geo-environmental engineering. Responsibilities included conducting experiments, grading assignments and exams, and providing academic support through office hours.</p>
+                </div>
+                
+                <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Student Mentoring</h3>
+                
+                <div class="course-item">
+                    <h3>Undergraduate Research Supervision</h3>
+                    <p><strong>Students Mentored:</strong> 5 undergraduate students (2019-2023) | <strong>Institution:</strong> McMaster University</p>
+                    <p>Provided comprehensive mentoring in experimental design, data collection & analysis, and results interpretation. Facilitated regular progress meetings and ensured completion of project milestones. <strong>Notable achievements:</strong> 2 undergraduate students published peer-reviewed journal articles as co-first authors, and one student team won the Best Poster Award at the International Water Association - Young Water Professionals Conference 2021.</p>
+                </div>
+                
+                <div class="course-item">
+                    <h3>Graduate Student Co-Supervision</h3>
+                    <p><strong>M.Sc. Student (McMaster, 2022):</strong> Predicting membrane fouling using machine learning approaches</p>
+                    <p><strong>M.Sc. Student (Northwestern, 2025):</strong> LLM applications for Life Cycle Assessment</p>
+                    <p>Guided graduate students in formulating research objectives, designing experiments, data analysis, and scientific writing. Contributed as co-author on resulting publications and provided career mentorship.</p>
+                </div>
+            </section>
+
+            <!-- CV Section - Simplified -->
+            <section id="cv" class="section">
+                <h2>Curriculum Vitae</h2>
+                
+                <div class="cv-download-container">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">
+                        For a comprehensive overview of my academic career, including complete publication list, awards, teaching experience, and professional activities, please download my full CV.
+                    </p>
+                    <a href="#" class="cv-download-btn">
+                        <i>📄</i> Download Full CV (PDF)
+                    </a>
+                    <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem;">
+                        Last updated: January 2025
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2>Contact & Office Hours</h2>
+                
+                <div class="about-content">
+                    <div>
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">Office Hours & Availability</h3>
+                        <p><strong>Current Status:</strong> Postdoctoral Fellow at Northwestern University</p>
+                        <p><strong>Office Hours:</strong> By appointment - please email to schedule a meeting</p>
+                        <p><strong>Response Time:</strong> I typically respond to emails within 24-48 hours</p>
+                        
+                        <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Research Collaborations</h3>
+                        <p>I'm actively interested in collaborating on research projects related to:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Life Cycle Assessment of water and wastewater treatment systems</li>
+                            <li>Machine learning applications in environmental engineering</li>
+                            <li>Uncertainty quantification in environmental models</li>
+                            <li>Sustainable water resource recovery technologies</li>
+                            <li>Climate impact assessment of water infrastructure</li>
+                        </ul>
+                        
+                        <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Prospective Students & Researchers</h3>
+                        <p>I welcome discussions with prospective graduate students, undergraduate researchers, and visiting scholars interested in environmental engineering and sustainability research.</p>
+                        
+                        <p>If you're interested in research opportunities, please include:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Your CV or resume</li>
+                            <li>A brief statement of research interests</li>
+                            <li>Relevant coursework, experience, or publications</li>
+                            <li>Specific research questions you'd like to explore</li>
+                        </ul>
+                        
+                        <h3 style="color: #2c3e50; margin: 2rem 0 1rem 0;">Professional Networks</h3>
+                        <p>I'm active in several professional organizations and welcome connections through:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>International Water Association (IWA)</li>
+                            <li>Water Environment Federation (WEF)</li>
+                            <li>Canadian Society for Civil Engineering (CSCE)</li>
+                            <li>International Society of Sustainability Science & Technology (ISSST)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p><i>📧</i> <a href="mailto:pengxiao.zhou@northwestern.edu">pengxiao.zhou@northwestern.edu</a></p>
+                        <p><i>📱</i> 773-299-0992</p>
+                        <p><i>📍</i> DG 51<br>2145 Sheridan Road<br>Northwestern University<br>Evanston, IL 60208</p>
+                        <p><i>🔗</i> <a href="https://scholar.google.com/citations?user=SeN76TYAAAAJ&hl=en">Google Scholar</a></p>
+                        <p><i>📄</i> <a href="#">ORCID</a></p>
+                        <p><i>💼</i> <a href="#">ResearchGate</a></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dr. Pengxiao Zhou. All rights reserved.</p>
+            <p>Last updated: January 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all nav links and sections
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked nav link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetSection = document.querySelector(this.getAttribute('href'));
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
